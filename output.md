@@ -1,0 +1,205 @@
+너는 반응형 디자인과 링크 미리보기와 사용성을 중시하는 프론트엔드 개발자야, html, css, bootstrap을 바탕으로 (추가적인 js와 인라인 스타일은 없이), flex와 container를 사용하여 모바일에서도 사용이 가능한, 카드/캐러셀/모달 컴포넌트를 포함한, #2C5F2D와 #97BC62를 컨셉 색깔로 하는, 강아지 간식 만드는 집 홍보 페이지를 만들어줘. cdn을 사용할 예정이고, index.html에 별도 style.css 없이 해주고, og 태그와 favicon을 만들 예정이므로 주석으로 해당 위치를 추가해줘. webfont도 추가 예정이므로 해당 위치를 주석으로 표시해줘.
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- OG 태그 -->
+    <meta property="og:title" content="강아지 간식 만드는 집">
+    <meta property="og:description" content="자연재료로 만든 강아지 간식, 신선하고 맛있는 간식으로 우리 강아지에게 사랑을 전하세요.">
+    <meta property="og:image" content="path/to/image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" href="path/to/favicon.ico" type="image/x-icon">
+
+    <title>강아지 간식 만드는 집</title>
+
+    <!-- CDN - Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Web Font 추가 위치 (주석으로 표시) -->
+    <!-- 예: <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
+
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .primary-bg {
+            background-color: #2C5F2D;
+        }
+
+        .secondary-bg {
+            background-color: #97BC62;
+        }
+
+        .card-img-top {
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .carousel-inner img {
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            border-radius: 10px;
+        }
+
+        .modal-header {
+            background-color: #2C5F2D;
+            color: white;
+            border-bottom: none;
+        }
+
+        .modal-footer {
+            border-top: none;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">강아지 간식 만드는 집</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">제품</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">문의</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero text-white text-center primary-bg py-5">
+        <div class="container">
+            <h1 class="display-4">자연 그대로의 맛, 강아지 간식!</h1>
+            <p class="lead">우리 강아지를 위한 최고의 간식을 만들어주세요.</p>
+            <a href="#products" class="btn btn-light btn-lg">제품 보기</a>
+        </div>
+    </section>
+
+    <!-- 소개 섹션 -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">우리의 철학</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>자연 재료만을 사용해 강아지들에게 건강한 간식을 제공합니다. 매일 신선한 재료를 사용하여 최상의 품질을 보장합니다.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>우리는 강아지의 건강을 최우선으로 생각하며, 모든 제품은 전문가의 조언을 받아 만들어집니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 제품 섹션 (카드 컴포넌트) -->
+    <section id="products" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">추천 제품</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="path/to/product1.jpg" class="card-img-top" alt="제품1">
+                        <div class="card-body">
+                            <h5 class="card-title">간식 1</h5>
+                            <p class="card-text">자연 재료로 만든 건강한 간식.</p>
+                            <a href="#" class="btn btn-primary">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="path/to/product2.jpg" class="card-img-top" alt="제품2">
+                        <div class="card-body">
+                            <h5 class="card-title">간식 2</h5>
+                            <p class="card-text">매일 신선한 재료로 만들어 더욱 맛있는 간식.</p>
+                            <a href="#" class="btn btn-primary">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="path/to/product3.jpg" class="card-img-top" alt="제품3">
+                        <div class="card-body">
+                            <h5 class="card-title">간식 3</h5>
+                            <p class="card-text">건강한 재료로 만든 최고의 선택.</p>
+                            <a href="#" class="btn btn-primary">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 제품 갤러리 (캐러셀) -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">우리의 간식 갤러리</h2>
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="path/to/gallery1.jpg" class="d-block w-100" alt="갤러리1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="path/to/gallery2.jpg" class="d-block w-100" alt="갤러리2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="path/to/gallery3.jpg" class="d-block w-100" alt="갤러리3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 문의 섹션 -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">문의하기</h2>
+            <p class="text-center">궁금한 사항은 언제든지 문의주세요!</p>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <button class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#contactModal">문의하기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 문의 모달 -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
